@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example 2</title>
+    <style>
+
+        body {
+            font-family: arial;
+        }
+
+        .textcontrol {
+            border-width: 2px solid;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>EECS 348 lab 3 practice 2</h1>
+    <p id="textcontrol">This is a example text for you to edit</p>
+
+    <p>
+        width: <input class="width-change" type="text" id="edit_width" value>
+    </p>
+    
+    <p for="red">
+        background red (0-255): <input type="text" id="red" value> <br>
+    </p>
+    <p for="green">
+        background green (0-255): <input type="text" id="green" value> <br>
+    </p>
+    <p for="blue">
+        background blue (0-255): <input type="text" id="blue" value> <br>
+    </p>
+
+
+    <p for="color-red">
+        color red (0-255): <input type="text" id="color-red" value> <br>
+    </p>
+    <p for="color-green">
+        color green (0-255): <input type="text" id="color-green" value> <br>
+    </p>
+    <p for="color-blue">
+        color blue (0-255): <input type="text" id="color-blue" value> <br>
+    </p>
+
+    <button id="update">Confirm changes</button>
+
+    <script>
+        const UserWidth = document.getElementById("edit_width"); //grab from class first
+        const redInput = document.getElementById('red');
+        const greenInput = document.getElementById('green');
+        const blueInput = document.getElementById('blue');
+        const thingWeManipulate = document.getElementById("textcontrol");
+        const updateButton = document.getElementById("update");
+
+        const colorRedInput = document.getElementById('color-red');
+        const colorGreenInput = document.getElementById('color-green');
+        const colorBlueInput = document.getElementById('color-blue');
+
+        updateButton.addEventListener('click', function() {
+            const getWidth = UserWidth.value; //become value
+
+            const r = redInput.value;
+            const g = greenInput.value;
+            const b = blueInput.value;
+
+            const color_r = colorRedInput.value;
+            const color_g = colorGreenInput.value;
+            const color_b = colorBlueInput.value;
+
+            const rgbOverall = `rgb(${r}, ${g}, ${b})`;
+
+            const colorOverall = `rgb(${color_r}, ${color_g}, ${color_b})`;
+
+            thingWeManipulate.style.backgroundColor = rgbOverall;
+            thingWeManipulate.style.border = `${getWidth}px solid`;
+            thingWeManipulate.style.color = colorOverall;
+
+        });
+
+    </script>
+
+</body>
+</html>

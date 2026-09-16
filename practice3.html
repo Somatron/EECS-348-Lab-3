@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example 3</title>
+    <style>
+        body {
+            font-family: arial;
+        }
+    </style>
+</head>
+<body>
+    <h1>EECS 348 Lab 3 practice 3</h1>
+
+    <p>
+    First Password: <input type="text" id="the-password" value> <br>
+    </p>
+
+    <p>
+    Second Password: <input type="text" id="second-password" value> <br>
+    </p>
+    <button id="confirm-password">Confirm password</button>
+
+    <script>
+        const confirmedPassword = document.getElementById('confirm-password');
+
+        confirmedPassword.addEventListener('click', function() {
+            const get_password_input = document.getElementById('the-password');
+            const first_password = get_password_input.value;
+        
+            const get_second = document.getElementById('second-password');
+            const second_password = get_second.value;
+
+            if (first_password.length < 8) {
+                alert("First password is less than 8 characters!");
+            }
+            else if (second_password.length < 8) {
+                alert("Second password is less than 8 characters!");
+            }            
+            else if (first_password !== second_password) {
+                alert("The 2 passwords dont match :( ");
+            }
+            else {
+                alert("Password confirmation was successful !!! ");
+            }
+
+        });
+
+    </script>
+    
+</body>
+</html>
