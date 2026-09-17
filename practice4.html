@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multiplication Table Generator</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 8px 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        .corner-header {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Multiplication Table Generator</h2>
+    
+    <form method="POST" action="">
+        <label for="number">Enter a number:</label>
+        <input type="number" id="number" name="number" min="1" required>
+        <button type="submit">Generate Table</button>
+    </form>
+
+    <div>
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['number'])) {
+        $num = (int)$_POST['number'];
+
+        if ($num > 0) {
+            echo "<h3>Multiplication Table (1 to {$num})</h3>";
+            echo "<table>";
+            
+            // Header Row (Column Indexes)
+            echo "<tr>";
+            echo "<th class='corner-header'>×</th>"; // Top-left corner cell
+            for ($col = 1; $col <= $num; $col++) {
+                echo "<th>Col {$col}</th>";
+            }
+            echo "</tr>";
+
+            // Table Body (Rows with Row Indexes)
+            for ($row = 1; $row <= $num; $row++) {
+                echo "<tr>";
+                // Print Row Index Header
+                echo "<th>Row {$row}</th>";
+                
+                // Print Calculated Product Cells
+                for ($col = 1; $col <= $num; $col++) {
+                    $product = $row * $col;
+                    echo "<td>{$product}</td>";
+                }
+                echo "</tr>";
+            }
+
+            echo "</table>";
+        }
+    }
+    ?>    
+    </div>
+    
+
+</body>
+</html>
